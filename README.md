@@ -5,6 +5,9 @@ I will also do this without AI, which I have used extensively for the last 2 yea
 
 As I will use at least 3 Libraries for my pthon tech stack I will include a requirements.txt page!
 
+## Coding Norms (shouldn't quite be here but will clean this up later)
+For Restful Endpoints - no trailing slashes. e.g. endpoints will be `/health`
+
 ---
 
 ## Create venv and install requirements
