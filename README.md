@@ -18,7 +18,7 @@ To install python virtual environment:
 python -m venv venv # is this because I gitignore this file.
 ```
 
-Run this command inoder to download virtual environment and libraries for tech stack.
+Run this command in order to download virtual environment and libraries for tech stack.
 
 ```bash
 source venv/bin/activate
