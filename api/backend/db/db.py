@@ -5,9 +5,10 @@ from utils.constants import DB_PATH, DB_SONGS_TABLE
 
 # Bring in helper
 from .db_helpers.connect import connect_to_db
-from .db_helpers.insert import insert_test
+from .db_helpers.insert import insert_song
 
 import asyncio # for testing
+from utils.classes import Song_Metadata
 
 # Deciding what pattern to follow, singleton or conneciton pooling?
 # singleton is good but can rely on itght coupling, which means we will need to pass
@@ -26,8 +27,8 @@ class Database:
 		self.cursor.execute(query, params or ())
 		return self.cursor.fetchall()
 		
-	async def insert_song(self, song_id, des):
-		insert_test(self.conn, self.cursor, song_id, des)
+	async def insert_song(self, song_metadata: Song_Metadata, album_cover = "", artist_cover = ""):
+		insert_song(self.conn, self.cursor, song_metadata, album_cover, artist_cover)
 	
 	async def save(self):
 		self.cursor.commit()
@@ -38,7 +39,7 @@ class Database:
 
 
 
-database_instance = Database()
+# database_instance = Database()
 
 # DI funciton
 async def get_db():
@@ -59,13 +60,21 @@ async def main():
 	# Next time add pydantic songs to insert them into database
 	# Pydantic model to create SQL!
 	# Add DB CRUD
-	# Begin to add DB logic to file (basic query and adding basic data)
+	# Begin to add DB logic to upload (basic query and adding basic data)
 	# We will then focus on id3
 	# Then how we will move the file!
+	
+	# To delete tables go in terminal:
+	# sqlite3
+	# .table to show tables then
+	# drop table table_name
 
 	# db testing
 	#db insert song
-	await database_instance.insert_song('test 6', 'NOTHER BIG D')
+	# test data
+	song_metadata = Song_Metadata(title="Thank you for the music", album="Mamma Mia", artist = "ABBA", year=1977, genre="Disco")
+	
+	await database_instance.insert_song(song_metadata)
 
 
 	# Query db to see if it works

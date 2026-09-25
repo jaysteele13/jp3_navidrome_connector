@@ -6,4 +6,4 @@ ROOT = "/home/jay"
 DB_PATH = f"{ROOT}/Documents/databases/db.db"
 
 # Database Variables
-DB_SONGS_TABLE = "test"
+DB_SONGS_TABLE = "songs" # delete test table!
