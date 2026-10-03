@@ -24,6 +24,9 @@ artist_cover: UploadFile | None = None):
 	# Rebuild Song Metadata
 	song_metadata = Song_Metadata(title=title, artist=artist, album=album, year=year, genre=genre)
 	
+	# Try insert into database!
+		
+	
 
 	# Define the parameters, metadata should be defined like the pydantic class
 	# Learn how we can add parameters to FastAPI

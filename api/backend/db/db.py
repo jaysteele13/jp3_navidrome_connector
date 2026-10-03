@@ -22,7 +22,8 @@ from utils.classes import Song_Metadata
 class Database:
 	def __init__(self, db_path=DB_PATH):
 		self.conn, self.cursor = connect_to_db()
-		
+	
+	# Generic Query of DB
 	async def query(self, query, params=None):
 		self.cursor.execute(query, params or ())
 		return self.cursor.fetchall()
@@ -57,9 +58,7 @@ async def main():
 	database_instance = Database() # test with this class first. Next time, change songs to match 
 	# await get_db() # is an async generator as FastAPI handles these for DI
 	
-	# Next time add pydantic songs to insert them into database
-	# Pydantic model to create SQL!
-	# Add DB CRUD
+	# Add DB CRUD - just do create for now then we will focus on other CRUD later!
 	# Begin to add DB logic to upload (basic query and adding basic data)
 	# We will then focus on id3
 	# Then how we will move the file!

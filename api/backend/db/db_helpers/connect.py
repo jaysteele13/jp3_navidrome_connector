@@ -2,6 +2,24 @@ import sqlite3
 
 # Import Path of db
 from utils.constants import DB_PATH, DB_SONGS_TABLE
+from utils.classes import Song_Metadata
+
+
+# Instantiate Database Path from given path form constants
+
+# Create Song Table
+class Song(Song_Metadata, table=True):
+	# Additional; Fields
+	id: UUID = Field(default_factory=uuid4, primary_key=True)
+	
+	file_path: str # required
+	album_path: str | None = None # can be optional files so therefore be empty
+	artist_path: str | None = None # can be optional files
+	
+	# Must make index / unqiue key for Song_metadta.title, aritst and album combined (unique identity)
+
+
+
 
 def connect_to_db():
 	try:
