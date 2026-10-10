@@ -10,18 +10,12 @@ from .db_helpers.insert import insert_song
 import asyncio # for testing
 from utils.classes import Song_Metadata
 
-# Deciding what pattern to follow, singleton or conneciton pooling?
-# singleton is good but can rely on itght coupling, which means we will need to pass
-# db obje everywhere which is not very scalable and adds complexity quickly.
 
-# Connection pooling is being researched - very scalable a bit more effort, will skip in favour of dependency injection.
-
-# Must make this a database class and can use helpers for easier maintianability.
-
-
+# We will use SQL acadmy as they manage memory better for dependency injection
 class Database:
-	def __init__(self, db_path=DB_PATH):
-		self.conn, self.cursor = connect_to_db()
+	async def __init__(self, db_path=DB_PATH):
+		self.engine = connect_to_db()
+		
 	
 	# Generic Query of DB
 	async def query(self, query, params=None):
