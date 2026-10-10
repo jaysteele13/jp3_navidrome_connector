@@ -8,6 +8,9 @@ from typing import Optional, Annotated
 # Get class
 from utils.classes import Song_Metadata
 
+# inherit session to begin to make Database Calls!
+from backend.db.db import SessionDep
+
 
 # Define router to allow this Structure to work!
 router = APIRouter()
@@ -23,6 +26,9 @@ artist_cover: UploadFile | None = None):
 	
 	# Rebuild Song Metadata
 	song_metadata = Song_Metadata(title=title, artist=artist, album=album, year=year, genre=genre)
+	
+	# Try insert into database!
+		
 	
 
 	# Define the parameters, metadata should be defined like the pydantic class

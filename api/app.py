@@ -1,6 +1,6 @@
 # import
 import uvicorn
-from fastapi import  FastAPI
+from fastapi import  FastAPI, Depends
 import os
 
 # import the routers
@@ -9,12 +9,18 @@ from routers import health, upload
 # import constants
 from utils.constants import *
 
-# defin the app and root with fastAPI
+
+
+# define the app and root with fastAPI
 app = FastAPI()
 
 # Initialise all Routes
 app.include_router(health.router)
 app.include_router(upload.router)
+
+ 
+
+
 
 @app.post("/")
 async def read_root():
