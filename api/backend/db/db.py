@@ -10,6 +10,11 @@ from .db_helpers.insert import insert_song
 import asyncio # for testing
 from utils.classes import Song_Metadata
 
+from typing import Annotated
+from sqlmodel import Session
+
+from fastapi import Depends
+
 
 # We will use SQL acadmy as they manage memory better for dependency injection
 class Database:
@@ -34,6 +39,17 @@ class Database:
 
 
 
+# Initialise the Session Dependency for whole app
+db = Database()
+engine = db.engine
+
+def get_session():
+    with Session(engine) as session:
+        yield session
+
+
+# Have SessionDep at the top
+SessionDep = Annotated[Session, Depends(get_session)]
 # database_instance = Database()
 
 # DI funciton

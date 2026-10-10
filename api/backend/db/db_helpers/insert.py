@@ -4,7 +4,8 @@ import uuid
 # Import Path of db
 from utils.constants import DB_PATH, DB_SONGS_TABLE
 from utils.classes import Song_Metadata
-	
+
+# will be replaced soon with other logic baked into db session to commit to table
 def insert_song(conn, cursor, song_metadata: Song_Metadata, album_path = "", artist_path = ""):
 	
 	# Instantiate Tables if they do not exist

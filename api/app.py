@@ -9,9 +9,7 @@ from routers import health, upload
 # import constants
 from utils.constants import *
 
-from backend.db.db import Database
-from typing import Annotated
-from sqlmodel import Session
+
 
 # define the app and root with fastAPI
 app = FastAPI()
@@ -20,18 +18,7 @@ app = FastAPI()
 app.include_router(health.router)
 app.include_router(upload.router)
 
-
-# Initialise the Session Dependency for whole app
-db = Database()
-engine = db.engine
-
-def get_session():
-    with Session(engine) as session:
-        yield session
-
-
-# Have SessionDep at the top
-SessionDep = Annotated[Session, Depends(get_session)]
+ 
 
 
 
