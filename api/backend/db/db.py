@@ -13,7 +13,7 @@ from utils.classes import Song_Metadata
 
 # We will use SQL acadmy as they manage memory better for dependency injection
 class Database:
-	async def __init__(self, db_path=DB_PATH):
+	def __init__(self, db_path=DB_PATH):
 		self.engine = connect_to_db()
 		
 	

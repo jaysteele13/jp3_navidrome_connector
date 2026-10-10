@@ -1,6 +1,6 @@
 # import
 import uvicorn
-from fastapi import  FastAPI
+from fastapi import  FastAPI, Depends
 import os
 
 # import the routers
@@ -10,6 +10,8 @@ from routers import health, upload
 from utils.constants import *
 
 from backend.db.db import Database
+from typing import Annotated
+from sqlmodel import Session
 
 # define the app and root with fastAPI
 app = FastAPI()

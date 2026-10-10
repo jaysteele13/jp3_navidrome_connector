@@ -4,8 +4,8 @@ import sqlite3
 from utils.constants import DB_PATH, DB_SONGS_TABLE
 from utils.classes import Song_Metadata
 
-from sqlmodel import Session, SQLModel, create_engine, Field, UUID
-from uuid import uuid4
+from sqlmodel import Session, SQLModel, create_engine, Field
+from uuid import uuid4, UUID
 # from sqlalchemy import Index
 
 
