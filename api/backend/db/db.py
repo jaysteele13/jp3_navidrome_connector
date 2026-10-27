@@ -48,51 +48,5 @@ def get_session():
         yield session
 
 
-# Have SessionDep at the top
-SessionDep = Annotated[Session, Depends(get_session)]
-# database_instance = Database()
-
-# DI funciton
-async def get_db():
-	try:
-		print(f"databse type:  {type(database_instance)}")
-		yield database_instance
-	finally:
-		print("Closing database after failing to grab db instance!")
-		await database_instance.close()
-		
-
-async def main():
-		
-	# DB instance
-	database_instance = Database() # test with this class first. Next time, change songs to match 
-	# await get_db() # is an async generator as FastAPI handles these for DI
-	
-	# Add DB CRUD - just do create for now then we will focus on other CRUD later!
-	# Begin to add DB logic to upload (basic query and adding basic data)
-	# We will then focus on id3
-	# Then how we will move the file!
-	
-	# To delete tables go in terminal:
-	# sqlite3
-	# .table to show tables then
-	# drop table table_name
-
-	# db testing
-	#db insert song
-	# test data
-	song_metadata = Song_Metadata(title="Thank you for the music", album="Mamma Mia", artist = "ABBA", year=1977, genre="Disco")
-	
-	await database_instance.insert_song(song_metadata)
-
-
-	# Query db to see if it works
-	query = f"SELECT * FROM {DB_SONGS_TABLE}"
-	res =  await database_instance.query(query)
-	print(f"Query DB: {res}")
-
-	# close this when finished.
-	await database_instance.close()
-# test db
-if __name__ == "__main__":
-	asyncio.run(main())
+# Have SessionDep at the top - DI
+SessionDep = Annotated[Session, Depends(get_session)]	 
