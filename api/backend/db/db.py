@@ -19,6 +19,7 @@ from fastapi import Depends
 # Initialise the Session Dependency for whole app
 engine = connect_to_db()
 
+
 def get_session():
     with Session(engine) as session:
         yield session

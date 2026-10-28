@@ -11,7 +11,7 @@ from uuid import uuid4, UUID
 
 # Instantiate Database Path from given path form constants
 
-# Create Song Table
+# Create Song Table # should be Songs delete in SQL and try again  
 class Song(Song_Metadata, table=True):
 	# Additional; Fields
 	id: UUID = Field(default_factory=uuid4, primary_key=True)

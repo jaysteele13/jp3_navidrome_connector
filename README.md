@@ -98,6 +98,18 @@ This API needs to a way to have:
 - Have good error handling if anything goes wrong in this process
 
 
+### How to View Databse Locally
+Inspect where the db lives locally. for me this is in `Documents/databases/db.db` good name I know. I configured this in constants.py.
+Simply run `sqlite3 db_path`
+
+Here are some simple commands:
+```SQL
+.tables -> shows all tables
+SELECT * from table_name -> you get the gist fam
+DROP TABLE table_name -> you know
+```
+
+
 
 
 

@@ -12,6 +12,7 @@ from utils.classes import Song_Metadata
 
 # inherit session to begin to make Database Calls!
 from backend.db.db import SessionDep
+from backend.db.db_helpers.connect import Song
 
 
 
@@ -30,11 +31,12 @@ artist_cover: UploadFile | None = None,):
 	
 	# Rebuild Song Metadata
 	song_metadata = Song_Metadata(title=title, artist=artist, album=album, year=year, genre=genre)
+	song = Song(**song_metadata.model_dump(), file_path="")
 	
 	# Try insert into database
-	session.add(song_metadata)
-	session.commit(song_metadata)
-	session.refresh(song_metadata)
+	session.add(song)
+	session.commit()
+	session.refresh(song)
 		
 	
 
