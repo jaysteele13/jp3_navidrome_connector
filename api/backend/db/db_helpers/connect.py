@@ -26,6 +26,7 @@ class Song(Song_Metadata, table=True):
 
 def connect_to_db():
 	connect_args = {"check_same_thread": False}
+	
 	# if all ready created ignore
 	engine = create_engine(DB_PATH, connect_args=connect_args)
 	

@@ -18,10 +18,6 @@ from backend.db.db import SessionDep
 # Define router to allow this Structure to work!
 router = APIRouter()
 
-@router.on_event("startup")
-def on_startup(session: SessionDep):
-    # basic SQL with Alchemy to test conneciton (Should already be connected) 
-    session.exec(text("SELECT 1"))
 
 #  Song_Metadata, song_file: UploadFile, album_cover: Optional[UploadFile], artist_cover: Optional[UploadFile
 @router.post("/upload")
@@ -35,7 +31,10 @@ artist_cover: UploadFile | None = None,):
 	# Rebuild Song Metadata
 	song_metadata = Song_Metadata(title=title, artist=artist, album=album, year=year, genre=genre)
 	
-	# Try insert into database!
+	# Try insert into database
+	session.add(song_metadata)
+	session.commit(song_metadata)
+	session.refresh(song_metadata)
 		
 	
 
