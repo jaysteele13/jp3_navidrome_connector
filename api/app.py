@@ -18,10 +18,6 @@ app = FastAPI()
 app.include_router(health.router)
 app.include_router(upload.router)
 
- 
-
-
-
 @app.post("/")
 async def read_root():
     return {"File Location: ": "Where in PI this is all saved"}
