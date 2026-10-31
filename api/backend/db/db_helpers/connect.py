@@ -1,7 +1,7 @@
 import sqlite3
 
 # Import Path of db
-from utils.constants import DB_PATH, DB_SONGS_TABLE
+from utils.constants import DB_PATH 
 from utils.classes import Song_Metadata
 
 from sqlmodel import Session, SQLModel, create_engine, Field

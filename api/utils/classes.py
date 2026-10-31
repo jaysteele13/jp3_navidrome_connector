@@ -1,13 +1,18 @@
 
 from sqlmodel import SQLModel, Field 
+from sqlalchemy import UniqueConstraint
 from uuid import uuid4, UUID
 
 class Song_Metadata(SQLModel):
-	title: str 
-	artist: str
-	album: str
+	title: str = Field(index=True)
+	artist: str = Field(index=True)
+	album: str = Field(index=True)
 	year: int | None
 	genre: str | None
+	
+	__table_args__ = (
+		UniqueConstraint("title", "artist", "album", name="uq_song_artist_album"),
+	)
 
 
 # Create Song Table # should be Songs delete in SQL and try again  
