@@ -8,11 +8,10 @@ from sqlalchemy import text
 from typing import Optional, Annotated
 
 # Get class
-from utils.classes import Song_Metadata
+from utils.classes import Song_Metadata, Song
 
 # inherit session to begin to make Database Calls!
 from backend.db.db import SessionDep
-from backend.db.db_helpers.connect import Song
 
 
 

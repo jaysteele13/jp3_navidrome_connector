@@ -1,14 +1,9 @@
 import sqlite3
 
-# Import Path of db
-from utils.constants import DB_PATH, DB_SONGS_TABLE
 
 # Bring in helper
 from .db_helpers.connect import connect_to_db
-from .db_helpers.insert import insert_song
 
-import asyncio # for testing
-from utils.classes import Song_Metadata
 
 from typing import Annotated
 from sqlmodel import Session
